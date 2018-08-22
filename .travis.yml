@@ -5,8 +5,7 @@ node_js:
 cache: yarn
 
 install:
-- yarn global add lerna jest now
-- lerna bootstrap
+- yarn global add jest now
 
 deploy:
   - provider: script
