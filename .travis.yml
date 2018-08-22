@@ -1,10 +1,14 @@
 language: node_js
 node_js:
 - 8.11.2
+
+cache: yarn
+
+install:
+- yarn global add lerna jest now
+- lerna bootstrap
+
 deploy:
-  provider: heroku
-  api_key:
-    secure: vpwgn62nkAxmflpZNi+KbsizLw3cDWey7RlGMlQ1F7KmuzjSsX7X4Ot64YZ8ng/0+pmOX+cxzk8ThhnFfTQA6QbcVV4TQTEzrRys3ibcXRWUIuRrZBJriL3vxsOJShgVUh/IgmR99h+k5nwqVEA8Qmp+giiks7Rw9cUzhicTVj+yIPjWUDgyq/A3Byxrjqd1c4X9rxS0scarDblG+2ndM43CcwxAnnACpZLchMjaTuHoncE34pdsqpIw708txpRsBYMR9Lr6e5SQXwfJPTUbZ0CP9Nr1g6y4EtY8s6xBCZuhqKAOvVG+iltLqfnJAuW3lYXjuhY7sTsSuPkkJQUEevCpZQykOCneFQidvCpeRNHRuzkPHX0Tva+xpt7KJsguCeMbErRUe6c/w+0dsguQPvlM9OL/vEyju4QGHF0slbdYF97TOprGgJGlwbYYjHN6upLUY+rirpqjpWr/IxrEU9q0WoEq21TQD7zucxR7yo323zVX1NvvdcSYBOK51LB9bPFCz/kHep0CXmlWSBGvmEeKNc4oMGN4JiLwI3/ECXupBj9OrbZaZ76bgPCMgoAulcZ1jjrlo1k3/4NfvHgZjIqQSMWHiA5GbYst+KFOYh2Zk+NrkrnSA/Oy5+z3afj8cW/PIjG+h9OS2aq1UzT5bJSf3B0jjGlLF44sugbr98o=
-  app: heroku-travis-test-01
-  on:
-    repo: andrico1234/heroku-travis-test
+  - provider: script
+    script: now --token ${NOW_TOKEN}
+    skip_cleanup: true
